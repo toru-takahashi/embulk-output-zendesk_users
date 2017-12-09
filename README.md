@@ -1,6 +1,7 @@
 # Zendesk Users output plugin for Embulk
 
-Embulk output plugin for Zendesk to update Zendesk User infomation. https://developer.zendesk.com/rest_api/docs/core/users#content
+Embulk output plugin for Zendesk to update Zendesk User infomation. Fro more details, see https://developer.zendesk.com/rest_api/docs/core/users#content
+
 This plugin's feature is limited, which allows you to update Zendesk User's tags and user_fileds.
 
 ## Overview
@@ -8,7 +9,7 @@ This plugin's feature is limited, which allows you to update Zendesk User's tags
 * **Plugin type**: output
 * **Load all or nothing**: no
 * **Resume supported**: no
-* **Cleanup supported**: yes
+* **Cleanup supported**: no
 
 ## Configuration
 
