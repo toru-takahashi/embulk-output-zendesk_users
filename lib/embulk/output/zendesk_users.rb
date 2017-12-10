@@ -84,8 +84,7 @@ module Embulk
 
       def add(page)
         Embulk.logger.info { "Connecting to #{@login_url}" }
-        Embulk.logger.info { "Start to upload #{page.size} records" }
-        if @method == "update" then 
+        if @method == "update" then
           # Batch Update updates up to 100 users.
           page.each_slice(100).with_index do |records, index|
             Embulk.logger.info { "Uploading #{records.size} records" }
@@ -108,7 +107,7 @@ module Embulk
         end
 
         job_status = @client.users.update_many!(requests)
-        
+
         # https://github.com/zendesk/zendesk_api_client_rb#apps-api
         # Note: job statuses are currently not supported, so you must manually poll the job status API for app creation.
         body = {}
@@ -117,7 +116,7 @@ module Embulk
           job_status = response.body['job_status']
           sleep(1)
         end
-        
+
         job_status['results'].each do |result|
           Embulk.logger.warn { "ID:#{result['id']}, Error:#{result['error']}" } unless result['success']
         end
