@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "embulk-output-zendesk_users"
-  spec.version       = "0.0.2"
+  spec.version       = "0.0.3"
   spec.authors       = ["Toru Takahashi"]
   spec.summary       = "Zendesk Users output plugin for Embulk"
   spec.description   = "Update Zendesk User's segments"
