@@ -118,7 +118,7 @@ module Embulk
         end
 
         job_status['results'].each do |result|
-          Embulk.logger.warn { "ID:#{result['id']}, Error:#{result['error']}" } unless result['success']
+          Embulk.logger.warn { "ID:#{result['id']}, Error:#{result['error']}, Details: #{result['details']}" } unless result['success']
         end
       end
 
