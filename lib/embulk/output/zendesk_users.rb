@@ -106,13 +106,25 @@ module Embulk
            requests << temp
         end
 
-        job_status = @client.users.update_many!(requests)
-
+        begin
+          job_status = @client.users.update_many!(requests)
+        rescue ZendeskAPI::Error::NetworkError => e
+          Embulk.logger.warn {"#{e}"}
+          Embulk.logger.warn {"Retrying..."}
+          retry              
+        end
+        
         # https://github.com/zendesk/zendesk_api_client_rb#apps-api
         # Note: job statuses are currently not supported, so you must manually poll the job status API for app creation.
         body = {}
         until %w{failed completed}.include?(job_status['status'])
-          response = @client.connection.get(job_status['url'])
+          begin
+            response = @client.connection.get(job_status['url'])
+          rescue ZendeskAPI::Error::NetworkError => e
+            Embulk.logger.warn {"#{e}"}
+            Embulk.logger.warn {"Retrying..."}
+            retry              
+          end
           job_status = response.body['job_status']
           sleep(1)
         end
