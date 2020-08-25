@@ -40,7 +40,7 @@ out:
   type: zendesk_users
   login_url: https://obscura.zendesk.com
   auth_method: token
-  username: test@test.com
+  username: test@example.com
   token: xxxxxxxxxx
   method: update
   id_column: id
