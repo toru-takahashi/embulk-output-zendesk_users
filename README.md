@@ -18,7 +18,7 @@ This plugin's feature is limited, which allows you to update Zendesk User's tags
 - **username**: Zendesk Username (string, required)
 - **token**: Zendesk API Token (string, required if auth_method is token)
 - **method**:  control whether to update the existing user or create new user(not supported) (string, default: `update`)
-- **id_column**: column name for user's email (long, default: `id`)
+- **id_column**: column name for user's id (long, default: `id`)
 - **tags_column**: column name for tags. Each tag is separated by comma (`string`, optional, default: `null`, overwrote)
 - **user_fields_column**: column name for Values of custom fields in the user's profile. (json, optional, default: `null`)
 
