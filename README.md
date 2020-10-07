@@ -21,6 +21,11 @@ This plugin's feature is limited, which allows you to update Zendesk User's tags
 - **id_column**: column name for user's id (long, default: `id`)
 - **tags_column**: column name for tags. Each tag is separated by comma (`string`, optional, default: `null`, overwrote)
 - **user_fields_column**: column name for Values of custom fields in the user's profile. (json, optional, default: `null`)
+- **name_column**: column name for user's name (long, default: `""`)
+- **phone_column**: column name for user's phone number (string, default: `null`)
+- **email_column**: column name for user's email (long, default: `null`)
+- **external_id_column**: column name for external_id (long, default: `null`)
+- **role_column**: column name for user's role (long, default: `null`)
 
 ## Example
 
