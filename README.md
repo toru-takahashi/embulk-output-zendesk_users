@@ -21,11 +21,14 @@ This plugin's feature is limited, which allows you to update Zendesk User's tags
 - **id_column**: column name for user's id (long, default: `id`)
 - **tags_column**: column name for tags. Each tag is separated by comma (`string`, optional, default: `null`, overwrote)
 - **user_fields_column**: column name for Values of custom fields in the user's profile. (json, optional, default: `null`)
-- **name_column**: column name for user's name (long, default: `""`)
+
+The following fields are supported at only `upsert` method
+
+- **name_column**: column name for user's name (`string`, default: `""`)
 - **phone_column**: column name for user's phone number (string, default: `null`)
-- **email_column**: column name for user's email (long, default: `null`)
-- **external_id_column**: column name for external_id (long, default: `null`)
-- **role_column**: column name for user's role (long, default: `null`)
+- **email_column**: column name for user's email (`string`, default: `null`)
+- **external_id_column**: column name for external_id (`long`, default: `null`)
+- **role_column**: column name for user's role (`long`, default: `null`)
 
 ## Example
 
@@ -51,6 +54,38 @@ out:
   id_column: id
   tags_column: tags
   user_fields_column: user_fields
+```
+
+``` yaml
+in:
+  type: config
+  columns:
+  - {name: id, type: long}
+  - {name: tags, type: json}
+  - {name: user_fields, type: json}
+  - {name: name, type: string}
+  - {name: phone, type: string}
+  - {name: email, type: string }
+  - {name: external_id, type: long}
+  - {name: role, type: long}
+  values:
+  - - [ 9811482788, ["tag1", "tag2"], { "xxxx": "Support description", "date": "2013-02-27T20:35:55Z" }, 'name testing', '000-000-000', 'toru+3@xxxxx-data.com', 111, 2859697]
+    - [ 0001010, ["tag3"], { "xxxx": "Support description" }, 'name testing2', '000-0000001', 'toru+4@xxxxx-data.com', 113, 2859707]
+out:
+  type: zendesk_users
+  login_url: https://xxxx.zendesk.com
+  auth_method: token
+  username: xxxx
+  token: xxxxx
+  method: upsert
+  id_column: id
+  tags_column: tags
+  user_fields_column: user_fields
+  name_column: name
+  phone_column: phone
+  email_column: email
+  external_id_column: external_id
+  role_column: role
 ```
 
 ### Data
