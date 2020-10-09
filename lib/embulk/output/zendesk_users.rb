@@ -22,6 +22,7 @@ module Embulk
           "email_column" => config.param("email_column", :string, default: nil),
           "external_id_column" => config.param("external_id_column", :string, default: nil),
           "role_column" => config.param("role_column", :string, default: nil),
+          "organization_id_column" => config.param("organization_id_column", :string, default: nil),
           "timeout" => config.param("timeout", :integer, default: 5),
           "open_timeout" => config.param("open_timeout", :integer, default: 2)
         }
@@ -72,6 +73,7 @@ module Embulk
         @email_column = task["email_column"]
         @external_id_column = task["external_id_column"]
         @role_column = task["role_column"]
+        @organization_id_column = task["organization_id_column"]
         @timeout = task["timeout"]
         @open_timeout = task["open_timeout"]
 
@@ -167,6 +169,7 @@ module Embulk
            temp.store("email", data["#{@email_column}"]) if @email_column
            temp.store("external_id", data["#{@external_id_column}"]) if @external_id_column
            temp.store("role", data["#{@role_column}"]) if @role_column
+           temp.store("organization_id", data["#{@organization_id_column}"]) if @organization_id_column
            Embulk.logger.debug {"Uploading data: #{temp}"}
            requests << temp
         end

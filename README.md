@@ -29,6 +29,7 @@ The following fields are supported at only `upsert` method
 - **email_column**: column name for user's email (`string`, default: `null`)
 - **external_id_column**: column name for external_id (`long`, default: `null`)
 - **role_column**: column name for user's role (`long`, default: `null`)
+- **organization_id_column**: column name for organization_id (`long`, default: `null`)
 
 ## Example
 
@@ -46,7 +47,7 @@ in:
     - [ 9811482788, ["tag3"], { "field0": "Support description" } ]
 out:
   type: zendesk_users
-  login_url: https://obscura.zendesk.com
+  login_url: https://xxx.zendesk.com
   auth_method: token
   username: test@example.com
   token: xxxxxxxxxx
@@ -68,9 +69,10 @@ in:
   - {name: email, type: string }
   - {name: external_id, type: long}
   - {name: role, type: long}
+  - {name: organization_id, type: long}
   values:
-  - - [ 9811482788, ["tag1", "tag2"], { "xxxx": "Support description", "date": "2013-02-27T20:35:55Z" }, 'name testing', '000-000-000', 'toru+3@xxxxx-data.com', 111, 2859697]
-    - [ 0001010, ["tag3"], { "xxxx": "Support description" }, 'name testing2', '000-0000001', 'toru+4@xxxxx-data.com', 113, 2859707]
+  - - [ 9811482788, ["tag1", "tag2"], { "xxxx": "Support description", "date": "2013-02-27T20:35:55Z" }, 'name testing', '000-000-000', 'toru+3@example.com', 111, 2859697, 1]
+    - [ 0001010, ["tag3"], { "xxxx": "Support description" }, 'name testing2', '000-0000001', 'toru+4@example.com', 113, 2859707, 2]
 out:
   type: zendesk_users
   login_url: https://xxxx.zendesk.com
@@ -86,6 +88,7 @@ out:
   email_column: email
   external_id_column: external_id
   role_column: role
+  organization_id_column: organization_id
 ```
 
 ### Data
