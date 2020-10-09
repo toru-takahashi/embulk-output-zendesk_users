@@ -29,6 +29,7 @@ The following fields are supported at only `upsert` method
 - **email_column**: column name for user's email (`string`, default: `null`)
 - **external_id_column**: column name for external_id (`long`, default: `null`)
 - **role_column**: column name for user's role (`long`, default: `null`)
+- **verified**: If you need to create users without sending out a verification email, set to `true`. (`boolean`, default: `false`)
 
 ## Example
 
